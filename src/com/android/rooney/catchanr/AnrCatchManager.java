@@ -155,10 +155,6 @@ public class AnrCatchManager {
 		return mInstance;
 	}
 	
-	/**
-	 * 开启Anr采集功能
-	 * @return
-	 */
 	private boolean startFileObserver() {
 		if (mFileObserver == null) {
 			mFileObserver = new TraceFileObserver(mObserverPath, FileObserver.CLOSE_WRITE);
@@ -177,9 +173,6 @@ public class AnrCatchManager {
 		return true;
 	}
 	
-	/**
-	 * 关闭ANR采集
-	 */
 	private void stopFileObserver() {
 		try {
 		    mFileObserver.stopWatching();
@@ -267,11 +260,6 @@ public class AnrCatchManager {
 		
 	}
 	
-	/**
-	 * 判断Trace文件是否存在
-	 * @param path
-	 * @return
-	 */
 	private boolean isTraceFileExists(String path) {
 		String fileFath = TRACE_PATH + path;
 		File traceFile = new File(fileFath);
@@ -282,10 +270,6 @@ public class AnrCatchManager {
 		return false;
 	}
 	
-	/**
-	 * 判断是否为本应用
-	 * @return
-	 */
 	private boolean findCmdPackage(String readline, boolean findCmdline) {
 		Matcher matcher = CMD_LINE.matcher(readline);
 		if (!findCmdline && matcher.find()) {
@@ -297,15 +281,6 @@ public class AnrCatchManager {
 		return findCmdline;
 	}
 	
-	/**
-	 * 寻找主线程
-	 * @param readline
-	 * @param param
-	 * @param findCmdline
-	 * @param builder
-	 * @param findmainline
-	 * @return
-	 */
 	private boolean[] findMainThread(String readline, 
 			boolean findCmdline,StringBuilder builder, boolean findmainline) {
 		boolean[] results = new boolean[]{findmainline, false};
